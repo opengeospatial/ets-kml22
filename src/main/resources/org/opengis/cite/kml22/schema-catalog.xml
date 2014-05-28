@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalog
+  PUBLIC "-//OASIS//DTD Entity Resolution XML Catalog V1.0//EN"
+         "http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd">
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+
+  <system systemId="http://www.w3.org/2009/01/xml.xsd"
+          uri="./xsd/w3c/2009/01/xml.xsd" />
+  <system systemId="http://www.w3.org/2001/xml.xsd"
+          uri="./xsd/w3c/2009/01/xml.xsd" />
+  <system systemId="http://www.w3.org/XML/2008/06/xlink.xsd"
+          uri="./xsd/w3c/2008/06/xlink.xsd" />
+  <system systemId="http://www.w3.org/1999/xlink.xsd"
+          uri="./xsd/w3c/2008/06/xlink.xsd" />
+
+  <system systemId="http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd"
+          uri="./xsd/ogc/kml/2.2.0/ogckml22.xsd" />
+  <system systemId="atom-author-link.xsd" 
+          uri="./xsd/ogc/kml/2.2.0/atom-author-link.xsd"/>
+  <uri name="http://www.opengis.net/kml/2.2" uri="./xsd/ogc/kml/2.2.0/ogckml22.xsd"/>
+  <system systemId="http://schemas.opengis.net/gml/3.2.1/gml.xsd"
+          uri="./xsd/ogc/gml/3.2.1/gml-3.2.1.xsd" />
+  <system systemId="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd"
+          uri="./xsd/ogc/xlink/1.0/xlink-1.0.xsd" />
+
+  <system systemId="http://schemas.opengis.net/iso/19139/20070417/gmd/gmd.xsd"
+          uri="./xsd/iso/19139/2007/gmd-2007.xsd" />
+  <system systemId="http://schemas.opengis.net/iso/19139/20070417/gco/gco.xsd"
+          uri="./xsd/iso/19139/2007/gco-2007.xsd" />
+  <system systemId="http://schemas.opengis.net/iso/19139/20070417/gts/gts.xsd"
+          uri="./xsd/iso/19139/2007/gts-2007.xsd" />
+  <system systemId="http://schemas.opengis.net/iso/19139/20070417/gss/gss.xsd"
+          uri="./xsd/iso/19139/2007/gss-2007.xsd" />
+  <system systemId="http://schemas.opengis.net/iso/19139/20070417/gsr/gsr.xsd"
+          uri="./xsd/iso/19139/2007/gsr-2007.xsd" />
+
+  <system systemId="http://docs.oasis-open.org/election/external/xAL.xsd"
+          uri="./xsd/oasis/ciq/2.0/xAL.xsd" />
+  <uri name="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"
+       uri="./xsd/oasis/ciq/2.0/xAL.xsd"/>
+
+</catalog>

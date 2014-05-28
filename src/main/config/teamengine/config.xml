@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Add this entry to TE_BASE/config.xml (//organization/standard) -->
+<organization>
+  <name>OGC</name>
+  <standard>
+    <name>OGC KML</name>
+    <version>
+      <name>2.2</name>
+      <suite>
+        <namespace-uri>http://www.opengis.net/cite/kml22</namespace-uri>
+        <prefix>tns</prefix>
+        <local-name>ets-kml22-${project.version}</local-name>
+        <title>OGC KML 2.2 Validator</title>
+        <description>Validates the structure and content of standard KML 2.2 documents.</description>
+      </suite>
+      <revision>
+        <name>${project.version}</name>
+        <sources>
+          <source>kml22/${spec-version}/ctl</source>
+        </sources>
+        <webdir>kml22/${spec-version}/site</webdir>
+      </revision>
+    </version>
+  </standard>
+</organization>

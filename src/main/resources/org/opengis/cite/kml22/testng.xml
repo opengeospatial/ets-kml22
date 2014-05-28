@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="kml22-${version}" verbose="0" configfailurepolicy="skip">
+  <parameter name="iut" 
+    value="https://developers.google.com/kml/documentation/KML_Samples.kml"/>
+  <parameter name="ics"  value="3"/>
+
+  <listeners>
+    <listener class-name="org.opengis.cite.kml22.TestRunListener" />
+    <listener class-name="org.opengis.cite.kml22.SuiteFixtureListener" />
+  </listeners>
+
+  <test name="Conformance Level 1">
+    <classes>
+      <class name="org.opengis.cite.kml22.level1.KmlDocumentTests" />
+      <class name="org.opengis.cite.kml22.level1.SpatialTests" />
+      <class name="org.opengis.cite.kml22.level1.StyleTests" />
+      <class name="org.opengis.cite.kml22.level1.TemporalElementTests" />
+      <class name="org.opengis.cite.kml22.level1.LinkTests" />
+      <class name="org.opengis.cite.kml22.level1.FeatureTests" />
+      <class name="org.opengis.cite.kml22.level1.UserDefinedDataTests" />
+      <class name="org.opengis.cite.kml22.level1.ViewTests" />
+    </classes>
+  </test>
+  <test name="Conformance Level 2">
+    <classes>
+      <class name="org.opengis.cite.kml22.level2.Level2Tests" />
+      <class name="org.opengis.cite.kml22.level2.Recommendations" />
+      <class name="org.opengis.cite.kml22.level2.StyleRecommendations" />
+    </classes>
+  </test>
+  <test name="Conformance Level 3">
+    <classes>
+      <class name="org.opengis.cite.kml22.level3.Level3Tests" />
+      <class name="org.opengis.cite.kml22.level3.Options" />
+    </classes>
+  </test>
+</suite>

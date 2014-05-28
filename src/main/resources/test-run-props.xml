@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties version="1.0">
+    <comment>Sample test run arguments</comment>
+    <entry key="iut">https://developers.google.com/kml/documentation/KML_Samples.kml</entry>
+    <entry key="ics">3</entry>
+</properties>

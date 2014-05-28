@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <title>KML 2.2 Validator</title>
+    <meta charset="UTF-8" />
+    <style type="text/css">
+body {
+	color: black;
+	background: white;
+	font-family: Georgia, serif;
+}
+
+h1,h2,h3 {
+	font-family: Verdana, sans-serif;
+	color: #000099;
+	text-align: left;
+}
+
+h1 {
+	font-size: 1.4em;
+	margin-top: 2em;
+}
+
+h2 {
+	font-size: 1.2em;
+}
+
+h3 {
+	font-size: 1em;
+	margin-bottom: 0.5em;
+}
+
+table {
+	margin-top: 0.5em;
+	margin-bottom: 1em;
+	border-collapse: collapse;
+}
+
+td,th {
+	padding: 0.25em;
+	border: 1px solid black;
+}
+
+caption,figcaption {
+	font-weight: bold;
+	text-align: left;
+	margin: 0.25em;
+}
+
+th {
+	font-weight: bold;
+	font-family: Verdana, sans-serif;
+	text-align: left;
+	vertical-align: top;
+	background: #eeeeee;
+	color: #000099;
+}
+
+dt {
+	margin-top: 0.5em;
+	font-weight: bold;
+}
+    </style>
+  </head>
+  <body>
+    <h1>KML 2.2 Validator</h1>
+    <h2>Scope</h2>
+    <p>The OGC KML conformance test suite implements the abstract test suite (ATS) 
+    for <a href="https://portal.opengeospatial.org/files/?artifact_id=27810">OGC
+    KML 2.2</a> and provides a basis for verifying the structure and content of 
+    KML 2.2 documents.</p>
+
+    <p>
+		Three conformance levels are defined in the KML 2.2 specification, where each level 
+		builds upon the lower level by imposing additional constraints; these essentially
+		correspond to the imperative terms defined in <a href="http://tools.ietf.org/html/rfc2119" 
+    target="_blank">RFC 2119</a> (MUST, SHOULD, MAY).
+    </p>
+
+    <ul>
+      <li style="list-style: square;"><em>Level 1</em> - includes test cases covering requirements
+			that must be satisfied by a minimally conformant document;</li>
+      <li style="list-style: square;"><em>Level 2</em> - as for Level 1, plus test cases addressing
+			recommended constraints;</li>
+      <li style="list-style: square;"><em>Level 3</em> - as for Level 2, plus test cases covering
+			suggested constraints that are informative in nature.</li>
+    </ul>
+
+    <p>The test suite definition file (testng.xml) is located in the root package, 
+    <code>org.opengis.cite.kml22</code>. A conformance class corresponds to a 
+    &lt;test&gt; element; each test element includes a set of test classes that 
+    contain the actual test methods. The essential structure of the test suite is 
+    shown in Table 1.</p>
+
+    <table border="1" style="border-collapse: collapse;">
+      <caption>Table 1 - Test suite structure</caption>
+      <thead>
+        <tr style="background-color:#eeeeee;">
+          <th>Conformance class</th>
+          <th>Test classes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="vertical-align: top;">
+          <td>Level 1</td>
+          <td>
+            <ul style="list-style: none;">
+              <li>org.opengis.cite.kml22.level1.KmlDocumentTests</li>
+              <li>org.opengis.cite.kml22.level1.SpatialTests</li>
+              <li>org.opengis.cite.kml22.level1.StyleTests</li>
+              <li>org.opengis.cite.kml22.level1.TemporalElementTests</li>
+              <li>org.opengis.cite.kml22.level1.LinkTests</li>
+              <li>org.opengis.cite.kml22.level1.FeatureTests</li>
+              <li>org.opengis.cite.kml22.level1.UserDefinedDataTests</li>
+              <li>org.opengis.cite.kml22.level1.ViewTests</li>
+            </ul>
+          </td>
+        </tr>
+        <tr style="vertical-align: top;">
+          <td>Level 2</td>
+          <td>
+            <ul style="list-style: none;">
+              <li>org.opengis.cite.kml22.level2.Level2Tests</li>
+              <li>org.opengis.cite.kml22.level2.Recommendations</li>
+              <li>org.opengis.cite.kml22.level2.StyleRecommendations</li>
+            </ul>
+          </td>
+        </tr>
+        <tr style="vertical-align: top;">
+          <td>Level 3</td>
+          <td>
+            <ul style="list-style: none;">
+              <li>org.opengis.cite.kml22.level3.Level3Tests</li>
+              <li>org.opengis.cite.kml22.level3.Options</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The Javadoc documentation provides more detailed information about the 
+  test classes and test methods that comprise the suite.</p>
+
+    <h2>Test requirements</h2>
+    <p>The documents listed below stipulate requirements that must be
+		satisfied by a conforming instance document.</p>
+    <ul>
+      <li style="list-style: square;">[OGC-07-147r2] <a
+			href="http://portal.opengeospatial.org/files/?artifact_id=27810"
+			target="_blank" type="application/pdf">OGC® KML 2.2.0</a></li>
+      <li style="list-style: square;">[OGC-07-134r2] <a
+			href="http://portal.opengeospatial.org/files/?artifact_id=27811"
+			target="_blank" type="text/html">OGC KML 2.2 - Abstract Test
+				Suite</a></li>
+    </ul>
+
+    <h2>How to run the tests</h2>
+    <p>The test suite may be run in any of the following environments:</p>
+    <ul>
+      <li style="list-style: square;">Integrated development environment (IDE): The main Java class
+			is <code> TestNGController</code>.
+      </li>
+      <li style="list-style: square;">REST API: Submit a request that includes the necessary
+			arguments to the <a
+			href="../../../../rest/suites/kml22/${project.version}/run" target="_blank"
+			type="application/xml">test run controller</a>
+      </li>
+      <li style="list-style: square;">TEAM-Engine: Run the CTL script located in the <code>/src/main/ctl/</code>
+			directory.
+      </li>
+    </ul>
+    <p>
+		The test run arguments are summarized in Table 2. The value domain is
+		expressed in terms of XML Schema datatypes for convenience. The <em>Obligation</em>
+		descriptor can have the following values: M (mandatory), O (optional),
+		or C (conditional).
+    </p>
+
+    <table border="1" style="border-collapse: collapse;">
+      <caption>Table 2 - Test run arguments</caption>
+      <thead>
+        <tr style="background-color:#eeeeee;">
+          <th>Name</th>
+          <th>Value domain</th>
+          <th>Obligation</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>iut</td>
+          <td>anyURI</td>
+          <td>M</td>
+          <td>A URI that refers to the instance document under test.
+					Ampersand ('&amp;') characters must be percent-encoded as '%26'.</td>
+        </tr>
+        <tr>
+          <td>ics</td>
+          <td>positiveInteger</td>
+          <td>O</td>
+          <td>Indicates which conformance level (1-3) will be used to
+					validate the instance document. If not specified, the lowest
+					conformance level will be checked (ics=1).</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </body>
+</html>
