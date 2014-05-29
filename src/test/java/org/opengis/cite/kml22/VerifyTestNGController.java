@@ -53,7 +53,7 @@ public class VerifyTestNGController {
 
     @Test
     public void doTestRun() throws Exception {
-        URL testSubject = getClass().getResource("/kml/KML_samples.kml");
+        URL testSubject = getClass().getResource("/kml/KML_Samples.kml");
         this.testRunProps.setProperty(TestRunArg.IUT.toString(), testSubject
                 .toURI().toString());
         this.testRunProps.setProperty(TestRunArg.ICS.toString(), "2");
