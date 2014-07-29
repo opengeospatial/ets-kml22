@@ -63,7 +63,7 @@ dt {
     </style>
   </head>
   <body>
-    <h1>KML 2.2 Validator</h1>
+    <h1>KML 2.2 Test</h1>
     <h2>Scope</h2>
     <p>The OGC KML conformance test suite implements the abstract test suite (ATS) 
     for <a href="https://portal.opengeospatial.org/files/?artifact_id=27810">OGC
@@ -85,7 +85,9 @@ dt {
       <li style="list-style: square;"><em>Level 3</em> - as for Level 2, plus test cases covering
 			suggested constraints that are informative in nature.</li>
     </ul>
+    
 
+    <h2>Structure of the Test Suite</h2>
     <p>The test suite definition file (testng.xml) is located in the root package, 
     <code>org.opengis.cite.kml22</code>. A conformance class corresponds to a 
     &lt;test&gt; element; each test element includes a set of test classes that 
@@ -202,6 +204,13 @@ dt {
         </tr>
       </tbody>
     </table>
+    
+    <h2>Reference implementation and example files</h2>
+    <p>The reference implementation is  GDAL (1.11) - <a href="http://gdal.org/ogr/drv_libkml.html">http://gdal.org/ogr/drv_libkml.html</a> </p>
+    <p>Example files created by the GDAL library are available in a zip file <a href="Supporting_Docs_KML_2.2_GDAL.zip">here</a>. </p>
+    
+    <h3>Feedback</h3>
+    <p> Feedback and suggestions are very welcome. Please use the <a href="https://github.com/opengeospatial/ets-gml32/issues">issue tracker</a> on Github to provide feedback. You are also welcome to use the <a href="http://cite.opengeospatial.org/forum">CITE Forum</a> for general questions.</p>
 
   </body>
 </html>

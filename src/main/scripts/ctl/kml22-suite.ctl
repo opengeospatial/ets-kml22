@@ -33,46 +33,58 @@
           <h2>KML 2.2 Validator</h2>
           <div class="scope" 
 			      style="background:#F0F8FF" bgcolor="#F0F8FF">
-            <p>The instance under test (IUT) is checked against the following specifications:</p>
+            <p>This validator verifies correct implementation of KML 2.2. It is expected that the implementation generates correct KML document following these specifications:</p>
             <ul>
               <li><a href="http://portal.opengeospatial.org/files/?artifact_id=27810" 
                  target="_blank">OGC KML 2.2.0</a> (OGC 07-147r2)</li>
               <li><a href="http://portal.opengeospatial.org/files/?artifact_id=27811" 
                  target="_blank">OGC KML 2.2 - Abstract Test Suite</a> (OGC 07-134r2)</li>
             </ul>
-            <p>Three conformance levels are defined, where each level extends the lower one.</p>
+            <p>Three conformance levels are defined in the specifications. Level 2 is based on Level 1 and Level 3 is based on Level 2. An implementation needs to pass at least level 1 to get an OGC certificate.</p>
             <ol>
               <li>Level 1: Mandatory constraints</li>
               <li>Level 2: Recommended constraints</li>
               <li>Level 3: Optional constraints</li>
             </ol>
           </div>
-          <p><strong>Note: </strong>If both a URI reference and a file are given below, the 
-          uploaded document takes precedence.</p>
+          
+          <p>More details about this test can be found <a href="./about/kml22/2.2/site/" target="_blank"></a>
+          
+          
+          
           <fieldset style="background:#ccffff">
             <legend style="font-family: sans-serif; color: #000099; 
 			                 background-color:#F0F8FF; border-style: solid; 
-                       border-width: medium; padding:4px">Instance under test</legend>
+                       border-width: medium; padding:4px">KML (or KMZ) Document to Test</legend>
             <p>
               <label class="form-label" for="uri">
-                <h4 style="margin-bottom: 0.5em">Location of KML resource (absolute 'http' or 'file' URI)</h4>
+                <h4 style="margin-bottom: 0.5em">Provide the location (URL) of the document</h4>
+                <p>(For example: 'http://org.com/myDocument.kml' or 'file://myDocument.kml' URI)</p>
               </label>
               <input id="uri" name="uri" size="96" type="text" value="https://developers.google.com/kml/documentation/KML_Samples.kml" />
             </p>
             <p>
               <label class="form-label" for="doc">
-                <h4 style="margin-bottom: 0.5em">Upload KML document</h4>
+                <h4 style="margin-bottom: 0.5em">Upload the document form your local computer</h4>
               </label>
               <input id="doc" name="doc" size="96" type="file" />
             </p>
+            
+            <p><strong>Note: </strong>If both a URL reference and a file are given below, the uploaded document takes precedence.</p>
+            
+            <h4>Select the conformance class you want to test against:</h4>
+            
             <p>
               <label class="form-label" for="level">Conformance class: </label>
+              <br>
               <input id="level-1" type="radio" name="level" value="1" checked="checked" />
-              <label class="form-label" for="level-1"> Level 1 | </label>
+              <label class="form-label" for="level-1"> Level 1</label>
+                            <br>
               <input id="level-2" type="radio" name="level" value="2" />
-              <label class="form-label" for="level-2"> Level 2 | </label>
+              <label class="form-label" for="level-2"> Level 2 (includes Level 1) </label>
+                            <br>
               <input id="level-3" type="radio" name="level" value="3" />
-              <label class="form-label" for="level-3"> Level 3</label>
+              <label class="form-label" for="level-3"> Level 3 (includes Level 1 and Level 2) </label>
             </p>
           </fieldset>
           <p>
