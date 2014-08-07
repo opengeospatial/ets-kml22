@@ -36,6 +36,7 @@ public class SuiteFixtureListener implements ISuiteListener {
 
     @Override
     public void onStart(ISuite suite) {
+        Reporter.clear(); // clear output from previous test runs
         Schema kmlSchema = ValidationUtils.createKMLSchema();
         if (null != kmlSchema) {
             suite.setAttribute(SuiteAttribute.KML_SCHEMA.getName(), kmlSchema);
@@ -45,7 +46,6 @@ public class SuiteFixtureListener implements ISuiteListener {
 
     @Override
     public void onFinish(ISuite suite) {
-        Reporter.clear(); // clear output from previous test runs
         Reporter.log("Test suite parameters:");
         Reporter.log(suite.getXmlSuite().getAllParameters().toString());
     }
