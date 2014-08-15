@@ -1,4 +1,4 @@
-**OGC KML 2.2 Validator**
+**OGC KML 2.2 Conformance Test Suite**
 
 This test suite checks KML 2.2 documents for conformance to _OGC KML, Version 
 2.2.0_ ([OGC 07-147r2](http://portal.opengeospatial.org/files/?artifact_id=27810)). 
