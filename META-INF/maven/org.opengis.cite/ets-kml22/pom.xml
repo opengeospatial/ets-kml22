@@ -7,10 +7,10 @@
     <version>1</version>
   </parent>
   <artifactId>ets-kml22</artifactId>
-  <version>2.2-r10</version>
+  <version>2.2-r11</version>
   <packaging>jar</packaging>
 
-  <name>KML 2.2 Validator</name>
+  <name>KML 2.2 Conformance Test Suite</name>
   <description>Checks KML 2.2 instance documents for conformance to the OGC specification 
   (OGC 07-147r2).</description>
   <licenses>
@@ -28,7 +28,7 @@
     <connection>scm:git:https://github.com/opengeospatial/ets-kml22.git</connection>
     <developerConnection>scm:git:git@github.com:opengeospatial/ets-kml22.git</developerConnection>
     <url>https://github.com/opengeospatial/ets-kml22</url>
-    <tag>2.2-r10</tag>
+    <tag>2.2-r11</tag>
   </scm>
   <issueManagement>
     <system>GitHub Issue Tracker</system>
