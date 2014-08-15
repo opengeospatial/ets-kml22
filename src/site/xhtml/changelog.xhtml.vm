@@ -7,6 +7,12 @@
   <body>
     <h1>Release Notes</h1>
 
+    <h2>2.2-r11 (2014-08-15)</h2>
+    <p>This release includes the following changes:</p>
+    <ul>
+      <li style="list-style:square">Updated documentation.</li>
+    </ul>
+
     <h2>2.2-r10 (2014-05-28)</h2>
     <p>The project is now hosted on GitHub. There are no substantive changes to any tests 
     in this release.</p>

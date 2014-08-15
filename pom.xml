@@ -10,7 +10,7 @@
   <version>2.2-r11-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>KML 2.2 Validator</name>
+  <name>KML 2.2 Conformance Test Suite</name>
   <description>Checks KML 2.2 instance documents for conformance to the OGC specification 
   (OGC 07-147r2).</description>
   <licenses>

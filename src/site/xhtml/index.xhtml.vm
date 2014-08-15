@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
   <head>
-    <title>KML 2.2 Validator</title>
+    <title>KML 2.2 Conformance Test Suite</title>
     <meta charset="UTF-8" />
     <style type="text/css">
 body {
@@ -63,11 +63,10 @@ dt {
     </style>
   </head>
   <body>
-    <h1>KML 2.2 Test</h1>
+    <h1>KML 2.2 Conformance Test Suite</h1>
     <h2>Scope</h2>
-    <p>This test verifies correct implementation of KML 2.2. It is expected that the implementation under test generates correct KML documents following these specifications:</p>
-    
-     <ul>
+    <p>This test suite validates KML 2.2 documents according to the following specifications:</p>
+    <ul>
       <li style="list-style: square;">[OGC-07-147r2] <a
 			href="http://portal.opengeospatial.org/files/?artifact_id=27810"
 			target="_blank" type="application/pdf">OGC® KML 2.2.0</a></li>
@@ -76,12 +75,11 @@ dt {
 			target="_blank" type="text/html">OGC KML 2.2 - Abstract Test
 				Suite</a></li>
     </ul>
-    
 
-   
-	<p>Three conformance levels are defined in the specifications. Level 2 is based on Level 1 and Level 3 is based on Level 2. An implementation needs to pass at least level 1 to get an OGC certificate.</p>
-
-
+    <p>Three conformance levels are defined, where each level builds upon the lower level by adding 
+    additional constraints. Level 2 extends Level 1, and Level 3 is based on Level 2. A conforming 
+    implementation must produce documents that validate at level 1 in order to obtain an OGC compliance 
+    certificate.</p>
     <ul>
       <li style="list-style: square;"><em>Level 1</em> - includes test cases covering requirements
 			that must be satisfied by a minimally conformant document;</li>
@@ -90,22 +88,24 @@ dt {
       <li style="list-style: square;"><em>Level 3</em> - as for Level 2, plus test cases covering
 			suggested constraints that are informative in nature.</li>
     </ul>
-    
 
-    <h2>Structure of the Test Suite</h2>
-    <p>The test suite implements the abstract test suite with Java classes. The Java classes are group by Logical Theme. For example the <b>TemporalElementTests</b>, implement the following test cases:
-    <ul>
-      <li><a href="ats-kml-2.2.html#TimeSpan">ATC 4: TimeSpan</a></li>
-      <li><a href="ats-kml-2.2.html#TimeStamp">ATC 5: TimeStamp</a></li>
-    </ul>
+    <h2>Organization of the test suite</h2>
+    <p>The test suite implements the test cases defined in the abstract test suite (ATS). 
+    The Java implementation classes generally correspond to a logical theme. For example 
+    the <code>TemporalElementTests</code> class realizes the following test cases:
+      <ul>
+        <li><a href="ats-kml-2.2.html#TimeSpan">ATC 4: TimeSpan</a></li>
+        <li><a href="ats-kml-2.2.html#TimeStamp">ATC 5: TimeStamp</a></li>
+      </ul>
     </p>
-    
-    <p>
-    All the test cases are explained in detailed in the <a href="ats-kml-2.2.html">Abstract Test Suite</a>. More details about the Java Classes are explained in the next section. </p>
 
-    <h2> Structure of the Java Code </h2>
-    <p>The test suite definition file (testng.xml) is located in the root package, 
-    <code>org.opengis.cite.kml22</code>. A conformance class corresponds to a 
+    <p>
+    All of the test cases are described in the <a href="ats-kml-2.2.html">ATS</a>. 
+    More details about the implementation are explained in the next section. </p>
+
+    <h2>Structure of the source code</h2>
+    <p>The TestNG suite definition file (testng.xml) is located in the root package, 
+      <code>org.opengis.cite.kml22</code>. A conformance class corresponds to a 
     &lt;test&gt; element; each test element includes a set of test classes that 
     contain the actual test methods. The essential structure of the test suite is 
     shown in Table 1.</p>
@@ -156,30 +156,27 @@ dt {
       </tbody>
     </table>
 
-    <p>The <a href="apidocs/index.html">Javadoc</a> documentation provides more detailed information about the test classes and test methods that comprise the suite.</p>
-
+    <p>The <a href="apidocs/index.html">Javadoc</a> documentation provides more detailed 
+    information about the test classes and test methods that comprise the suite.</p>
 
     <h2>How to run the tests</h2>
     <p>The test suite may be run in any of the following environments:</p>
     <ul>
-      <li style="list-style: square;"> TEAM-Engine in a web environment
-      </li>
-      <li style="list-style: square;">TEAM-Engine: Run the CTL script located in the <code>/src/main/ctl/</code>
-			directory.
-      </li>      
+      <li style="list-style: square;">TEAM-Engine in a web application environment</li>
+      <li style="list-style: square;">TEAM-Engine in a command-line environment: 
+      Run the CTL script located in the <code>/src/main/ctl/</code> directory.</li>
       <li style="list-style: square;">Integrated development environment (IDE): The main Java class
 			is <code> TestNGController</code>.
       </li>
       <li style="list-style: square;">REST API: Submit a request that includes the necessary
 			arguments to the test run controller (/rest/suites/kml22/${project.version}/run).
       </li>
-      
     </ul>
+
     <p>
-		The test run arguments are summarized in Table 2. The value domain is
-		expressed in terms of XML Schema datatypes for convenience. The <em>Obligation</em>
-		descriptor can have the following values: M (mandatory), O (optional),
-		or C (conditional).
+		The test run arguments are summarized in Table 2. The value domain is expressed in 
+    terms of XML Schema datatypes for convenience. The <em>Obligation</em> descriptor 
+    can have the following values: M (mandatory), O (optional), or C (conditional).
     </p>
 
     <table border="1" style="border-collapse: collapse;">
@@ -210,13 +207,19 @@ dt {
         </tr>
       </tbody>
     </table>
-    
-    <h2>Reference implementation and example files</h2>
-    <p>The reference implementation is  GDAL (1.11) - <a href="http://gdal.org/ogr/drv_libkml.html">http://gdal.org/ogr/drv_libkml.html</a> </p>
-    <p>Example files created by the GDAL library are available in a zip file <a href="Supporting_Docs_KML_2.2_GDAL.zip">here</a>. </p>
-    
+
+    <h2>Reference implementation and sample files</h2>
+    <p>The reference implementation is the <a target="_blank" href="http://gdal.org/ogr/drv_libkml.html">
+    LIBKML Driver</a> in the GDAL (Geospatial Data Abstraction Library ) 1.11.0 library. 
+    Sample files created using the driver are available in a zip file 
+      <a href="Supporting_Docs_KML_2.2_GDAL.zip">here</a>.</p>
+
     <h2>Feedback</h2>
-    <p> Feedback and suggestions are very welcome. Please use the <a href="https://github.com/opengeospatial/ets-gml32/issues">issue tracker</a> on Github to provide feedback. You are also welcome to use the <a href="http://cite.opengeospatial.org/forum">CITE Forum</a> for general questions.</p>
+    <p>Feedback and suggestions are very welcome. Please use the <a target="_blank" 
+    href="https://github.com/opengeospatial/ets-kml22/issues">GitHub issue tracker</a>. 
+    More general questions about any aspect of OGC conformance testing should be 
+    directed to the <a target="_blank" href="http://cite.opengeospatial.org/forum">
+    CITE Forum</a>.</p>
 
   </body>
 </html>
