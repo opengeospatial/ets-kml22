@@ -17,6 +17,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Source;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 
 import org.opengis.cite.kml22.util.TestSuiteLogger;
@@ -133,10 +134,10 @@ public class TestNGController implements TestSuiteController {
                 || testRunArgs.getElementsByTagName("entry").getLength() == 0) {
             throw new Exception("No test run arguments were supplied.");
         }
+        TestSuiteLogger.log(Level.CONFIG, "testRunArgs type: "  + testRunArgs.getClass().getName());
         XPath xpath = XPathFactory.newInstance().newXPath();
-        Boolean hasIUTKey = (Boolean) xpath.evaluate(
-                String.format("//entry[@key='%s']", TestRunArg.IUT),
-                testRunArgs, XPathConstants.BOOLEAN);
+        XPathExpression xpe = xpath.compile(String.format("//entry[@key='%s']", TestRunArg.IUT));
+        Boolean hasIUTKey = (Boolean) xpe.evaluate(testRunArgs, XPathConstants.BOOLEAN);
         if (!hasIUTKey) {
             throw new Exception(String.format(
                     "Missing argument: '%s' must be present.", TestRunArg.IUT));
