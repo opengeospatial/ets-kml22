@@ -7,6 +7,15 @@
   <body>
     <h1>Release Notes</h1>
 
+    <h2>1.12 (2016-01-DD)</h2>
+    <p>This maintenance release includes the following fixes:</p>
+    <ul>
+      <li style="list-style:square">Fix <a target="_blank" 
+      href="https://github.com/opengeospatial/ets-kml22/issues/6">issue #6</a>: 
+      Redirects to 'https' endpoints are not followed</li>
+      <li style="list-style:square">Update dependencies</li>
+    </ul>
+
     <h2>2.2-r11 (2014-08-15)</h2>
     <p>This release includes the following changes:</p>
     <ul>
