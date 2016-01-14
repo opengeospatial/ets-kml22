@@ -11,6 +11,9 @@
     <p>This maintenance release includes the following fixes:</p>
     <ul>
       <li style="list-style:square">Fix <a target="_blank" 
+      href="https://github.com/opengeospatial/ets-kml22/issues/7">issue #7</a>: 
+      Incorrect assertion in verifyLookAt test (altitudeMode check)</li>
+      <li style="list-style:square">Fix <a target="_blank" 
       href="https://github.com/opengeospatial/ets-kml22/issues/6">issue #6</a>: 
       Redirects to 'https' endpoints are not followed</li>
       <li style="list-style:square">Update dependencies</li>
