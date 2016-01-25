@@ -7,16 +7,17 @@
   <body>
     <h1>Release Notes</h1>
 
-    <h2>1.12 (2016-01-DD)</h2>
-    <p>This maintenance release includes the following fixes:</p>
+    <h2>1.12 (2016-01-25)</h2>
+    <p>This maintenance release includes the following updates:</p>
     <ul>
       <li style="list-style:square">Fix <a target="_blank" 
       href="https://github.com/opengeospatial/ets-kml22/issues/7">issue #7</a>: 
-      Incorrect assertion in verifyLookAt test (altitudeMode check)</li>
+      Incorrect assertion in <code>verifyLookAt</code> test (altitudeMode check)</li>
       <li style="list-style:square">Fix <a target="_blank" 
       href="https://github.com/opengeospatial/ets-kml22/issues/6">issue #6</a>: 
       Redirects to 'https' endpoints are not followed</li>
       <li style="list-style:square">Update dependencies</li>
+      <li style="list-style:square">Adopt new CITE versioning scheme</li>
     </ul>
 
     <h2>2.2-r11 (2014-08-15)</h2>
