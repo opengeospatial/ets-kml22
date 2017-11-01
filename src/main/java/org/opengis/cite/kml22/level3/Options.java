@@ -37,7 +37,7 @@ public class Options extends BaseFixture {
     public void deprecatedElements() {
         SchematronValidator validator = ValidationUtils
                 .buildSchematronValidator("kml-2.2.sch", "Deprecated");
-        DOMResult result = validator.validate(new DOMSource(this.testSubject,
+        DOMResult result = (DOMResult) validator.validate(new DOMSource(this.testSubject,
                 this.testSubject.getDocumentURI()));
         Assert.assertFalse(
                 validator.ruleViolationsDetected(),
