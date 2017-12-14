@@ -12,6 +12,9 @@
         <local-name>ets-kml22-${project.version}</local-name>
         <title>OGC KML 2.2 Validator</title>
         <description>Validates the structure and content of standard KML 2.2 documents.</description>
+        <BasicConformanceClasses>
+          <conformanceClass>Conformance Level 1</conformanceClass>
+        </BasicConformanceClasses>
       </suite>
       <revision>
         <name>${project.version}</name>
