@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import javax.ws.rs.HttpMethod;
 import javax.ws.rs.core.Response;
 import javax.xml.namespace.QName;
+import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.dom.DOMResult;
 import javax.xml.transform.stream.StreamSource;
@@ -182,7 +183,7 @@ public class ETSAssert {
 			msg.append(e.getMessage());
 			throw new AssertionError(msg);
 		}
-		DOMResult result = validator.validate(xmlSource);
+		DOMResult result = (DOMResult) validator.validate( xmlSource);
 		Assert.assertFalse(validator.ruleViolationsDetected(), ErrorMessage
 				.format(ErrorMessageKeys.NOT_SCHEMA_VALID,
 						validator.getRuleViolationCount(),
