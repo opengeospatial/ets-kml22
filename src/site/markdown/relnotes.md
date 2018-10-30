@@ -1,0 +1,79 @@
+# Release Notes
+
+## 1.13 (2017-12-15)
+
+This release includes the following changes:
+
+*   Fix [issue #13](https://github.com/opengeospatial/ets-kml22/issues/13): Add conformance class configuration into the kml22 test
+*   Fix [issue #14](https://github.com/opengeospatial/ets-kml22/issues/14): Test deprecatedElements fails without detailed information
+
+## 1.12 (2016-01-25)
+
+This maintenance release includes the following updates:
+
+*   Fix [issue #7](https://github.com/opengeospatial/ets-kml22/issues/7): Incorrect assertion in `verifyLookAt` test (altitudeMode check)
+*   Fix [issue #6](https://github.com/opengeospatial/ets-kml22/issues/6): Redirects to 'https' endpoints are not followed
+*   Update dependencies
+*   Adopt new CITE versioning scheme
+
+## 2.2-r11 (2014-08-15)
+
+This release includes the following changes:
+
+*   Updated documentation.
+
+## 2.2-r10 (2014-05-28)
+
+The project is now hosted on GitHub. There are no substantive changes to any tests in this release.
+
+*   Modify POM for GitHub.
+*   Add site content.
+*   Change license to Apache License, Version 2.0.
+
+## 2.2-r9 (2014-04-15)
+
+This maintenance release includes the following fixes:
+
+*   CITE-942: verifyLinkReferent cannot handle parameterized URL (in PhotoOverlay).
+
+## 2.2-r8 (2014-03-20)
+
+This maintenance release includes the following changes:
+
+*   Resolve CITE-941: verifyUpdateTarget now checks updates against the original data.
+*   Resolve CITE-938 (Incorrect ATS reference in verifyAltitudeInGroundOverlay).
+*   Resolve CITE-903 (verifyGeometryTesselate test produces incorrect verdict).
+*   Resolve CITE-884 (Add support for validating KMZ files).
+*   Fix XPath expression in verifyTextureFileAliasInModel (SpatialTests).
+
+## 2.2-r7 (2014-03-04)
+
+This is a maintenance release; it includes the following changes:
+
+*   Modify unit tests to run without a network connection.
+*   Update dependencies to latest releases.
+
+## 2.2-r6 (2013-09-19)
+
+This is a maintenance release; it includes the following changes:
+
+*   Updated dependencies: jts-1.13, jena-iri-1.0.0.
+*   Write reporter output to test session directory when invoked via CTL script.
+
+## 2.2-r5 (2013-08-23)
+
+This is a maintenance release; it includes the following changes:
+
+*   CTL results show test verdicts for each conformance class.
+*   Updated dependencies.
+
+## 2.2-r4 (2013-07-19)
+
+This is a maintenance release; it includes the following fixes:
+
+*   CITE-844 (NoSuchMethodError thrown executing KML 2.2 test suite).
+*   Check lowest conformance level by default instead of highest.
+
+## 2.2-r3
+
+*   Initial release (beta).
