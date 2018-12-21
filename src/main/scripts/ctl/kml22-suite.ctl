@@ -67,7 +67,7 @@
                 <h4 style="margin-bottom: 0.5em">Upload the document form your local computer</h4>
               </label>
               <p>
-              <input id="iut_doc" name="doc" size="96" type="file" />
+              <input id="iut_doc" name="doc" size="96" type="file" onChange="return window.parent.resetIutValue('iut_uri', 'iut_doc');"/>
                </p>
             
             <p><strong>Note: </strong>If both a URL reference and a file are given below, the uploaded document takes precedence.</p>
@@ -89,7 +89,7 @@
           
           </fieldset>
           <p>
-            <input class="form-button" type="submit" value="Start" onClick="return window.parent.validation()" />
+            <input class="form-button" type="submit" value="Start" onClick="return window.parent.validateIutInputs('iut_uri', 'iut_doc');" />
             <input class="form-button" type="reset" value="Clear" />
           </p>
         </ctl:form>
