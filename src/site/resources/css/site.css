@@ -5,3 +5,19 @@ h2 {font-size: 1.2em;}
 h3 {font-size: 1em; margin-bottom: 0.5em;}
 pre { margin-top: 1em; margin-bottom: 1em; }
 .figure {margin-top: 2em; margin-bottom: 2em; text-align:center;}
+table.atstable {
+    margin: 10px;
+}
+
+.atstable th, td {
+    border: 1px solid #000;
+    padding-left: 5px;
+}
+
+.atstable td:nth-child(1) {
+    font-family: verdana, sans-serif;
+    text-align: left;
+    vertical-align: top;
+    background: #eeeeee;
+    color: #000099;
+}
