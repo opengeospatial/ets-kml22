@@ -59,9 +59,9 @@
           
               <label class="form-label" for="uri">
                 <h4 style="margin-bottom: 0.5em">Provide the location (URL) of the document</h4>
-                <p>(For example: 'http://org.com/myDocument.kml' or 'file://myDocument.kml')</p>
+                <p>(For example: 'https://developers.google.com/kml/documentation/KML_Samples.kml')</p>
               </label>
-              <input id="iut_uri" name="uri" size="96" type="text" value="https://developers.google.com/kml/documentation/KML_Samples.kml" />
+              <input id="iut_uri" name="uri" size="96" type="text" />
             
               <label class="form-label" for="doc">
                 <h4 style="margin-bottom: 0.5em">Upload the document form your local computer</h4>
