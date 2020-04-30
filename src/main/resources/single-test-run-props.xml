@@ -4,4 +4,5 @@
     <comment>Sample test run arguments</comment>
     <entry key="iut">https://developers.google.com/kml/documentation/KML_Samples.kml</entry>
     <entry key="ics">3</entry>
+    <entry key="includeTestMethods"></entry>
 </properties>
