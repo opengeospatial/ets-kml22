@@ -26,6 +26,8 @@
         <exclude>com.sun.jersey:jersey-client</exclude>
         <exclude>org.opengis.cite:schema-utils</exclude>
         <exclude>joda-time:joda-time</exclude>
+        <exclude>org.testng:testng</exclude>
+        <exclude>javax.ws.rs:jsr311-api</exclude>
       </excludes>
       <outputDirectory>/</outputDirectory>
       <unpack>false</unpack>
