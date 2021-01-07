@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite>
+	<title>KML 2.2 Conformance Test Suite</title>
+	<description>The OGC KML conformance test suite implements the abstract test suite (ATS)
+		for OGC KML 2.2 and provides a basis for validating the structure and content of KML 2.2 documents.
+		The test run arguments are summarized in the following table. The value domain is expressed in 
+		terms of XML Schema datatypes for convenience. The obligation descriptor can have the following 
+		values: M (mandatory), O (optional), or C (conditional).
+	</description>
+	<testrunarguments>
+		<testrunargument>
+			<name>iut</name>
+			<valuedomain>anyURI</valuedomain>
+			<obligation>M</obligation>
+			<description>A URI that refers to the instance document under test.
+				Ampersand ('&amp;') characters must be percent-encoded as '%26'.
+			</description>
+		</testrunargument>
+		<testrunargument>
+			<name>ics</name>
+			<valuedomain>positiveInteger</valuedomain>
+			<obligation>O</obligation>
+			<description>Indicates which conformance level (1-3) will be used to validate the instance 
+			    document. If not specified, the lowest conformance level will be checked (ics=1).
+			</description>
+		</testrunargument>
+	</testrunarguments>
+</testsuite>
