@@ -45,7 +45,7 @@
   <properties>
     <ets-code>kml22</ets-code>
     <spec-version>2.2</spec-version>
-    <docker.teamengine.version>5.3</docker.teamengine.version>
+    <docker.teamengine.version>5.4.1</docker.teamengine.version>
   </properties>
 
   <dependencies>
