@@ -1,5 +1,14 @@
 = Release Notes
 
+== 1.14 (2021-10-28)
+
+* https://github.com/opengeospatial/ets-kml22/pull/27[#27]: Bump xercesImpl from 2.11.0 to 2.12.1
+* https://github.com/opengeospatial/ets-kml22/issues/23[#23]: Add template to get an XML/JSON response via rest endpoint
+* https://github.com/opengeospatial/ets-kml22/pull/26[#26]: Set Docker TEAM Engine version to 5.4.1
+* https://github.com/opengeospatial/ets-kml22/issues/21[#21]: Cleanup dependencies
+* https://github.com/opengeospatial/ets-kml22/issues/19[#19]: Introduce Dockerfile and Maven Docker plugin
+* https://github.com/opengeospatial/ets-kml22/issues/9[#9]: Move site documentation to markdown
+
 == 1.13 (2017-12-15)
 
 This release includes the following changes:
