@@ -7,7 +7,7 @@
     <version>9</version>
   </parent>
   <artifactId>ets-kml22</artifactId>
-  <version>1.14-SNAPSHOT</version>
+  <version>1.14</version>
   <packaging>jar</packaging>
 
   <name>KML 2.2 Conformance Test Suite</name>
@@ -28,7 +28,7 @@
     <connection>scm:git:https://github.com/opengeospatial/ets-kml22.git</connection>
     <developerConnection>scm:git:git@github.com:opengeospatial/ets-kml22.git</developerConnection>
     <url>https://github.com/opengeospatial/ets-kml22</url>
-    <tag>HEAD</tag>
+    <tag>1.14</tag>
   </scm>
   <issueManagement>
     <system>GitHub Issue Tracker</system>
