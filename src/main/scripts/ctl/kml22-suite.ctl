@@ -59,15 +59,15 @@
           
               <label class="form-label" for="uri">
                 <h4 style="margin-bottom: 0.5em">Provide the location (URL) of the document</h4>
-                <p>(For example: 'http://org.com/myDocument.kml' or 'file://myDocument.kml')</p>
+                <p>(For example: 'https://developers.google.com/kml/documentation/KML_Samples.kml')</p>
               </label>
-              <input id="uri" name="uri" size="96" type="text" value="https://developers.google.com/kml/documentation/KML_Samples.kml" />
+              <input id="iut_uri" name="uri" size="96" type="text" />
             
               <label class="form-label" for="doc">
                 <h4 style="margin-bottom: 0.5em">Upload the document form your local computer</h4>
               </label>
               <p>
-              <input id="doc" name="doc" size="96" type="file" />
+              <input id="iut_doc" name="doc" size="96" type="file"/>
                </p>
             
             <p><strong>Note: </strong>If both a URL reference and a file are given below, the uploaded document takes precedence.</p>
@@ -89,22 +89,21 @@
           
           </fieldset>
           <p>
-            <input class="form-button" type="submit" value="Start" />
+            <input class="form-button" type="submit" value="Start" onClick="return window.parent.validateIutInputs('iut_uri', 'iut_doc');" />
             <input class="form-button" type="reset" value="Clear" />
           </p>
         </ctl:form>
       </xsl:variable>
-      <xsl:variable name="uri" select="$form-data//value[@key='uri']" />
-      <xsl:variable name="file" select="$form-data//value[@key='doc']/ctl:file-entry" />
+      <xsl:variable name="iut-file" select="$form-data//value[@key='doc']/ctl:file-entry/@full-path" />
       <xsl:variable name="test-run-props">
         <properties version="1.0">
           <entry key="iut">
             <xsl:choose>
-              <xsl:when test="(string-length($uri) gt 0) and empty($file/@full-path)">
-                <xsl:value-of select="$uri"/>
+              <xsl:when test="empty($iut-file)">
+                <xsl:value-of select="normalize-space($form-data/values/value[@key='uri'])"/>
               </xsl:when>
               <xsl:otherwise>
-                <xsl:value-of select="concat('file:///', $file/@full-path)" />
+                <xsl:copy-of select="concat('file:///', $iut-file)" />
               </xsl:otherwise>
             </xsl:choose>
           </entry>
