@@ -1,5 +1,12 @@
 = Release Notes
 
+== 1.15 (2023-01-31)
+
+* https://github.com/opengeospatial/ets-kml22/issues/11[#11]: If a users selects a file, the default uri also gets logged
+* https://github.com/opengeospatial/ets-kml22/pull/31[#31]: Set TEAM Engine dependencies to v5.5.2
+* https://github.com/opengeospatial/ets-kml22/pull/29[#29]: Bump xercesImpl from 2.12.1 to 2.12.2
+* https://github.com/opengeospatial/ets-kml22/pull/28[#28]: Bump commons-io from 2.4 to 2.7
+
 == 1.14 (2021-10-28)
 
 * https://github.com/opengeospatial/ets-kml22/pull/27[#27]: Bump xercesImpl from 2.11.0 to 2.12.1
