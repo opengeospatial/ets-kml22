@@ -45,13 +45,14 @@
   <properties>
     <ets-code>kml22</ets-code>
     <spec-version>2.2</spec-version>
-    <docker.teamengine.version>5.4.1</docker.teamengine.version>
+    <docker.teamengine.version>5.5.2</docker.teamengine.version>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>org.opengis.cite.teamengine</groupId>
       <artifactId>teamengine-spi</artifactId>
+      <version>5.5.2</version>
     </dependency>
     <dependency>
       <groupId>org.opengis.cite</groupId>
