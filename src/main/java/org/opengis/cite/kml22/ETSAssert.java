@@ -7,10 +7,7 @@ import java.net.URL;
 import java.util.Map;
 import java.util.logging.Level;
 
-import javax.ws.rs.HttpMethod;
-import javax.ws.rs.core.Response;
 import javax.xml.namespace.QName;
-import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.dom.DOMResult;
 import javax.xml.transform.stream.StreamSource;
@@ -19,9 +16,6 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
-
-import net.sf.saxon.s9api.SaxonApiException;
-import net.sf.saxon.s9api.XdmValue;
 
 import org.opengis.cite.kml22.util.KMLUtils;
 import org.opengis.cite.kml22.util.NamespaceBindings;
@@ -37,10 +31,14 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.ClientRequest;
-import com.sun.jersey.api.client.ClientResponse;
-import com.sun.jersey.api.client.config.ClientConfig;
+import jakarta.ws.rs.client.Client;
+import jakarta.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.client.Invocation;
+import jakarta.ws.rs.client.Invocation.Builder;
+import jakarta.ws.rs.client.WebTarget;
+import jakarta.ws.rs.core.Response;
+import net.sf.saxon.s9api.SaxonApiException;
+import net.sf.saxon.s9api.XdmValue;
 
 /**
  * Provides a set of custom assertion methods.
@@ -261,20 +259,22 @@ public class ETSAssert {
 	public static void assertReferentExists(URI uriRef, String baseURI,
 			Client httpClient, String... mediaTypes) {
 		if (null == httpClient) {
-			httpClient = Client.create();
+			httpClient = ClientBuilder.newClient();
 		}
-		httpClient.getProperties().put(ClientConfig.PROPERTY_FOLLOW_REDIRECTS,
-				true);
 		if (uriRef.isAbsolute() && !uriRef.getScheme().equals("file")) {
-			ClientRequest.Builder reqBuilder = ClientRequest.create();
-			reqBuilder.accept(mediaTypes);
-			ClientRequest req = reqBuilder.build(uriRef, HttpMethod.GET);
-			ClientResponse rsp = httpClient.handle(req);
+			WebTarget target = httpClient.target(uriRef);
+	                Builder reqBuilder = target.request();
+	                reqBuilder.accept(mediaTypes);
+	                Invocation req = reqBuilder.buildGet();
+	                Response rsp = req.invoke();
 			if (rsp.getStatusInfo().getFamily() == Response.Status.Family.REDIRECTION) {
 				// client won't automatically redirect from HTTP to HTTPS
 				URI newURI = rsp.getLocation();
-				req.setURI(newURI);
-				rsp = httpClient.handle(req);
+	                        target = httpClient.target(newURI);
+	                        reqBuilder = target.request();
+	                        reqBuilder.accept(mediaTypes);
+	                        req = reqBuilder.buildGet();
+	                        rsp = req.invoke();
 			}
 			if ((rsp.getStatus() != Response.Status.OK.getStatusCode())) {
 				throw new AssertionError("No acceptable resource available at "

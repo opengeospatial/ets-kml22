@@ -7,15 +7,15 @@ import java.net.URISyntaxException;
 import java.util.logging.Level;
 
 import javax.imageio.ImageIO;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import javax.xml.xpath.XPathExpressionException;
 
+import org.glassfish.jersey.client.ClientResponse;
 import org.opengis.cite.kml22.BaseFixture;
 import org.opengis.cite.kml22.ETSAssert;
 import org.opengis.cite.kml22.ErrorMessage;
 import org.opengis.cite.kml22.KML22;
 import org.opengis.cite.kml22.Namespaces;
+import org.opengis.cite.kml22.util.ClientUtils;
 import org.opengis.cite.kml22.util.TestSuiteLogger;
 import org.opengis.cite.kml22.util.URIUtils;
 import org.opengis.cite.kml22.util.XMLUtils;
@@ -29,11 +29,11 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.ClientResponse;
-import com.sun.jersey.api.client.WebResource;
-import com.sun.jersey.api.client.WebResource.Builder;
-import com.sun.jersey.api.client.filter.LoggingFilter;
+import jakarta.ws.rs.client.Client;
+import jakarta.ws.rs.client.Invocation.Builder;
+import jakarta.ws.rs.client.WebTarget;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 /**
  * Contains test methods that apply to link elements and attributes that refer
@@ -53,9 +53,7 @@ public class LinkTests extends BaseFixture {
 	 */
 	@BeforeClass
 	public void initHttpClient() {
-		this.client = Client.create();
-		this.client.setFollowRedirects(true);
-		this.client.addFilter(new LoggingFilter(TestSuiteLogger.getLogger()));
+		this.client = ClientUtils.buildClient();
 	}
 
 	/**
@@ -467,16 +465,16 @@ public class LinkTests extends BaseFixture {
 		if (uriRef.getScheme().equalsIgnoreCase("file")) {
 			image = ImageIO.read(uriRef.toURL());
 		} else {
-			WebResource resource = this.client.resource(uriRef);
-			Builder builder = resource.accept("image/*");
+			WebTarget resource = this.client.target(uriRef);
+			Builder builder = resource.request("image/*");
 			ClientResponse rsp = builder.get(ClientResponse.class);
 			if (null != rsp.getLocation()) { // 3nn Redirection
-				resource = this.client.resource(rsp.getLocation());
-				rsp = resource.accept("image/*").get(ClientResponse.class);
+				resource = this.client.target(rsp.getLocation());
+				rsp = resource.request("image/*").get(ClientResponse.class);
 			}
 			int status = rsp.getStatus();
 			if (status == Response.Status.OK.getStatusCode() && rsp.hasEntity()) {
-				image = ImageIO.read(rsp.getEntityInputStream());
+				image = ImageIO.read(rsp.getEntityStream());
 			}
 		}
 		return image;

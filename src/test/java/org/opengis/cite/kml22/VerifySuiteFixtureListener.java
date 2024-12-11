@@ -16,7 +16,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.testng.ISuite;
 import org.testng.xml.XmlSuite;
 
@@ -56,7 +56,7 @@ public class VerifySuiteFixtureListener {
         SuiteFixtureListener iut = new SuiteFixtureListener();
         iut.onStart(suite);
         verify(suite).setAttribute(
-                Matchers.eq(SuiteAttribute.KML_SCHEMA.getName()),
-                Matchers.isA(Schema.class));
+                ArgumentMatchers.eq(SuiteAttribute.KML_SCHEMA.getName()),
+                ArgumentMatchers.isA(Schema.class));
     }
 }

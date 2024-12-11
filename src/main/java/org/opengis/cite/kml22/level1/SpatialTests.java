@@ -8,9 +8,13 @@ import java.util.LinkedHashSet;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.logging.Level;
+
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 
+import org.locationtech.jts.geom.GeometryFactory;
+import org.locationtech.jts.geom.LinearRing;
+import org.locationtech.jts.geom.Polygon;
 import org.opengis.cite.kml22.BaseFixture;
 import org.opengis.cite.kml22.ETSAssert;
 import org.opengis.cite.kml22.ErrorMessage;
@@ -28,10 +32,6 @@ import org.testng.annotations.Test;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
-import com.vividsolutions.jts.geom.GeometryFactory;
-import com.vividsolutions.jts.geom.LinearRing;
-import com.vividsolutions.jts.geom.Polygon;
 
 /**
  * Contains test methods that apply to spatial items in a KML resource such as
@@ -671,8 +671,8 @@ public class SpatialTests extends BaseFixture {
                 "east");
         NodeList westNodes = box.getElementsByTagNameNS(Namespaces.KML22,
                 "west");
-        Float east = new Float(180);
-        Float west = new Float(-180);
+        Float east = Float.valueOf(180);
+        Float west = Float.valueOf(-180);
         if (eastNodes.getLength() != 0) {
             east = Float.valueOf(eastNodes.item(0).getTextContent());
         }
@@ -706,8 +706,8 @@ public class SpatialTests extends BaseFixture {
                 "north");
         NodeList southNodes = box.getElementsByTagNameNS(Namespaces.KML22,
                 "south");
-        Float north = new Float(180);
-        Float south = new Float(-180);
+        Float north = Float.valueOf(180);
+        Float south = Float.valueOf(-180);
         if (northNodes.getLength() != 0) {
             north = Float.valueOf(northNodes.item(0).getTextContent());
         }
@@ -746,8 +746,8 @@ public class SpatialTests extends BaseFixture {
                 && maxAltitudeNodes.getLength() != 0) {
             checkAltMode(latLonAltBox, errHandler);
         }
-        Float minAltitude = new Float(0);
-        Float maxAltitude = new Float(0);
+        Float minAltitude = Float.valueOf(0);
+        Float maxAltitude = Float.valueOf(0);
         if (minAltitudeNodes.getLength() != 0) {
             minAltitude = Float.valueOf(minAltitudeNodes.item(0)
                     .getTextContent());
