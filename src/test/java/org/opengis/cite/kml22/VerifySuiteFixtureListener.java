@@ -22,41 +22,42 @@ import org.testng.xml.XmlSuite;
 
 public class VerifySuiteFixtureListener {
 
-    private static XmlSuite xmlSuite;
-    private static ISuite suite;
+	private static XmlSuite xmlSuite;
 
-    public VerifySuiteFixtureListener() {
-    }
+	private static ISuite suite;
 
-    @BeforeClass
-    public static void setUpClass() {
-        xmlSuite = mock(XmlSuite.class);
-        suite = mock(ISuite.class);
-        when(suite.getXmlSuite()).thenReturn(xmlSuite);
-    }
+	public VerifySuiteFixtureListener() {
+	}
 
-    @AfterClass
-    public static void tearDownClass() {
-    }
+	@BeforeClass
+	public static void setUpClass() {
+		xmlSuite = mock(XmlSuite.class);
+		suite = mock(ISuite.class);
+		when(suite.getXmlSuite()).thenReturn(xmlSuite);
+	}
 
-    @Before
-    public void setUp() {
-    }
+	@AfterClass
+	public static void tearDownClass() {
+	}
 
-    @After
-    public void tearDown() {
-    }
+	@Before
+	public void setUp() {
+	}
 
-    @Test
-    public void onStartSetsSchema() throws URISyntaxException {
-        URL url = this.getClass().getResource("/atom-feed.xml");
-        Map<String, String> params = new HashMap<String, String>();
-        params.put(TestRunArg.IUT.toString(), url.toURI().toString());
-        when(xmlSuite.getParameters()).thenReturn(params);
-        SuiteFixtureListener iut = new SuiteFixtureListener();
-        iut.onStart(suite);
-        verify(suite).setAttribute(
-                ArgumentMatchers.eq(SuiteAttribute.KML_SCHEMA.getName()),
-                ArgumentMatchers.isA(Schema.class));
-    }
+	@After
+	public void tearDown() {
+	}
+
+	@Test
+	public void onStartSetsSchema() throws URISyntaxException {
+		URL url = this.getClass().getResource("/atom-feed.xml");
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(TestRunArg.IUT.toString(), url.toURI().toString());
+		when(xmlSuite.getParameters()).thenReturn(params);
+		SuiteFixtureListener iut = new SuiteFixtureListener();
+		iut.onStart(suite);
+		verify(suite).setAttribute(ArgumentMatchers.eq(SuiteAttribute.KML_SCHEMA.getName()),
+				ArgumentMatchers.isA(Schema.class));
+	}
+
 }

@@ -41,10 +41,15 @@ import org.xml.sax.SAXException;
 public class VerifyLinkTests {
 
 	private static final String SUBJ = SuiteAttribute.TEST_SUBJECT.getName();
+
 	private static DocumentBuilder docBuilder;
+
 	private static ITestContext testContext;
+
 	private static ISuite suite;
+
 	private ValidationErrorHandler errHandler;
+
 	@Rule
 	public ExpectedException thrown = ExpectedException.none();
 
@@ -72,21 +77,16 @@ public class VerifyLinkTests {
 	}
 
 	@Test
-	public void checkNetworkLinkTargetAsRelativeUri_NoErrors()
-			throws SAXException, IOException {
-		URL url = this.getClass().getResource(
-				"/kml/links/NetworkLink-relativeRef.xml");
+	public void checkNetworkLinkTargetAsRelativeUri_NoErrors() throws SAXException, IOException {
+		URL url = this.getClass().getResource("/kml/links/NetworkLink-relativeRef.xml");
 		Document doc = docBuilder.parse(url.toString());
 		when(suite.getAttribute(SUBJ)).thenReturn(doc);
 		LinkTests iut = new LinkTests();
 		iut.setTestSubject(doc);
-		Node linkNode = doc.getDocumentElement()
-				.getElementsByTagNameNS(Namespaces.KML22, "Link").item(0);
-		URI uriRef = URI.create(iut.getLinkHref((Element) linkNode,
-				this.errHandler));
+		Node linkNode = doc.getDocumentElement().getElementsByTagNameNS(Namespaces.KML22, "Link").item(0);
+		URI uriRef = URI.create(iut.getLinkHref((Element) linkNode, this.errHandler));
 		iut.checkNetworkLinkReferent(linkNode, uriRef, this.errHandler);
-		assertFalse("Expected no errors\n" + this.errHandler.toString(),
-				this.errHandler.errorsDetected());
+		assertFalse("Expected no errors\n" + this.errHandler.toString(), this.errHandler.errorsDetected());
 	}
 
 	@Test
@@ -94,8 +94,7 @@ public class VerifyLinkTests {
 	public void verifyLinkReferent_NotFound() throws SAXException, IOException {
 		thrown.expect(AssertionError.class);
 		thrown.expectMessage("Link element does not refer to a KML or KMZ resource");
-		URL url = this.getClass().getResource(
-				"/kml/links/NetworkLink-NotFound.xml");
+		URL url = this.getClass().getResource("/kml/links/NetworkLink-NotFound.xml");
 		Document doc = docBuilder.parse(url.toString());
 		when(suite.getAttribute(SUBJ)).thenReturn(doc);
 		LinkTests iut = new LinkTests();
@@ -105,20 +104,16 @@ public class VerifyLinkTests {
 
 	@Test
 	@Ignore("Passes, but skip to avoid network connection.")
-	public void verifyGroundOverlayWithHttpLink() throws SAXException,
-			IOException {
-		URL url = this.getClass().getResource(
-				"/kml/links/GroundOverlay-httpRef.xml");
+	public void verifyGroundOverlayWithHttpLink() throws SAXException, IOException {
+		URL url = this.getClass().getResource("/kml/links/GroundOverlay-httpRef.xml");
 		Document doc = docBuilder.parse(url.toString());
 		when(suite.getAttribute(SUBJ)).thenReturn(doc);
 		LinkTests iut = new LinkTests();
 		iut.setTestSubject(doc);
-		Element icon = (Element) doc.getDocumentElement()
-				.getElementsByTagNameNS(Namespaces.KML22, "Icon").item(0);
+		Element icon = (Element) doc.getDocumentElement().getElementsByTagNameNS(Namespaces.KML22, "Icon").item(0);
 		String uriRef = iut.getLinkHref((Element) icon, this.errHandler);
 		iut.checkOverlayIconReferent(icon, uriRef, this.errHandler);
-		assertEquals("Unexpected number of errors.", 0,
-				this.errHandler.getErrorCount());
+		assertEquals("Unexpected number of errors.", 0, this.errHandler.getErrorCount());
 	}
 
 	@Test
@@ -126,9 +121,7 @@ public class VerifyLinkTests {
 		URL url = this.getClass().getResource("/img/photo-1.jpg");
 		LinkTests iut = new LinkTests();
 		BufferedImage img = iut.readImageDataFromURI(url.toURI());
-		assertNotNull(
-				"Failed to create BufferedImage with data from " + url.toURI(),
-				img);
+		assertNotNull("Failed to create BufferedImage with data from " + url.toURI(), img);
 		assertEquals("Unexpected image height.", 93, img.getHeight());
 	}
 
@@ -139,31 +132,24 @@ public class VerifyLinkTests {
 		LinkTests iut = new LinkTests();
 		iut.initHttpClient();
 		BufferedImage img = iut.readImageDataFromURI(url.toURI());
-		assertNotNull(
-				"Failed to create BufferedImage with data from " + url.toURI(),
-				img);
+		assertNotNull("Failed to create BufferedImage with data from " + url.toURI(), img);
 		assertEquals("Unexpected image height.", 31, img.getHeight());
 	}
 
 	@Test
 	@Ignore("Passes, but skip to avoid network connection.")
-	public void readImageFromURLWithRedirect() throws IOException,
-			URISyntaxException {
-		URL url = new URL(
-				"http://developers.google.com/kml/documentation/images/etna.jpg");
+	public void readImageFromURLWithRedirect() throws IOException, URISyntaxException {
+		URL url = new URL("http://developers.google.com/kml/documentation/images/etna.jpg");
 		LinkTests iut = new LinkTests();
 		iut.initHttpClient();
 		BufferedImage img = iut.readImageDataFromURI(url.toURI());
-		assertNotNull(
-				"Failed to create BufferedImage with data from " + url.toURI(),
-				img);
+		assertNotNull("Failed to create BufferedImage with data from " + url.toURI(), img);
 		assertEquals("Unexpected image height.", 418, img.getHeight());
 	}
 
 	@Test
 	public void changePlacemark() throws SAXException, IOException {
-		URL url = this.getClass()
-				.getResource("/kml/links/Update-Placemark.xml");
+		URL url = this.getClass().getResource("/kml/links/Update-Placemark.xml");
 		Document doc = docBuilder.parse(url.toString());
 		LinkTests iut = new LinkTests();
 		iut.setTestSubject(doc);
@@ -183,45 +169,37 @@ public class VerifyLinkTests {
 	}
 
 	@Test
-	public void checkOverlayIconReferentWithImagePyramid() throws SAXException,
-			IOException {
+	public void checkOverlayIconReferentWithImagePyramid() throws SAXException, IOException {
 		URL url = this.getClass().getResource("/kml/features/PhotoOverlay.xml");
 		Document doc = docBuilder.parse(url.toString());
-		Element iconElem = (Element) doc.getElementsByTagNameNS(KML22.NS_NAME,
-				"Icon").item(0);
+		Element iconElem = (Element) doc.getElementsByTagNameNS(KML22.NS_NAME, "Icon").item(0);
 		LinkTests iut = new LinkTests();
 		iut.setTestSubject(doc);
 		String uriRef = iut.getLinkHref((Element) iconElem, this.errHandler);
 		iut.checkOverlayIconReferent(iconElem, uriRef, errHandler);
-		assertEquals("Unexpected number of errors detected.", 0,
-				this.errHandler.getErrorCount());
+		assertEquals("Unexpected number of errors detected.", 0, this.errHandler.getErrorCount());
 	}
 
 	@Test
-	public void checkOverlayIconReferentIsNotImage() throws SAXException,
-			IOException {
-		URL url = this.getClass().getResource(
-				"/kml/features/PhotoOverlay-NotImage.xml");
+	public void checkOverlayIconReferentIsNotImage() throws SAXException, IOException {
+		URL url = this.getClass().getResource("/kml/features/PhotoOverlay-NotImage.xml");
 		Document doc = docBuilder.parse(url.toString());
-		Element iconElem = (Element) doc.getElementsByTagNameNS(KML22.NS_NAME,
-				"Icon").item(0);
+		Element iconElem = (Element) doc.getElementsByTagNameNS(KML22.NS_NAME, "Icon").item(0);
 		LinkTests iut = new LinkTests();
 		iut.setTestSubject(doc);
 		String uriRef = iut.getLinkHref((Element) iconElem, this.errHandler);
 		iut.checkOverlayIconReferent(iconElem, uriRef, errHandler);
-		assertEquals("Unexpected number of errors detected.", 1,
-				this.errHandler.getErrorCount());
-		assertThat(this.errHandler.toString(),
-				CoreMatchers.containsString("Failed to read image data"));
+		assertEquals("Unexpected number of errors detected.", 1, this.errHandler.getErrorCount());
+		assertThat(this.errHandler.toString(), CoreMatchers.containsString("Failed to read image data"));
 	}
 
 	@Test
-	public void verifyParameterizedLinkInPhotoOverlay() throws SAXException,
-			IOException {
+	public void verifyParameterizedLinkInPhotoOverlay() throws SAXException, IOException {
 		URL url = this.getClass().getResource("/kml/features/PhotoOverlay.xml");
 		Document doc = docBuilder.parse(url.toString());
 		LinkTests iut = new LinkTests();
 		iut.setTestSubject(doc);
 		iut.verifyLinkReferent();
 	}
+
 }

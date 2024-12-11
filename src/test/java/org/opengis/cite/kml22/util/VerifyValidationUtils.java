@@ -27,73 +27,62 @@ import org.xml.sax.SAXException;
  */
 public class VerifyValidationUtils {
 
-    private static DocumentBuilder docBuilder;
+	private static DocumentBuilder docBuilder;
 
-    public VerifyValidationUtils() {
-    }
+	public VerifyValidationUtils() {
+	}
 
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        dbf.setNamespaceAware(true);
-        docBuilder = dbf.newDocumentBuilder();
-    }
+	@BeforeClass
+	public static void setUpClass() throws Exception {
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		dbf.setNamespaceAware(true);
+		docBuilder = dbf.newDocumentBuilder();
+	}
 
-    @Test
-    public void testBuildSchematronValidator() {
-        // matches entry in schematron-catalog.xml
-        String schemaRef = "gml-3.2.1.sch";
-        String phase = "";
-        SchematronValidator result = ValidationUtils.buildSchematronValidator(
-                schemaRef, phase);
-        Assert.assertNotNull(result);
-    }
+	@Test
+	public void testBuildSchematronValidator() {
+		// matches entry in schematron-catalog.xml
+		String schemaRef = "gml-3.2.1.sch";
+		String phase = "";
+		SchematronValidator result = ValidationUtils.buildSchematronValidator(schemaRef, phase);
+		Assert.assertNotNull(result);
+	}
 
-    @Test
-    public void extractRelativeSchemaReference() throws FileNotFoundException,
-            XMLStreamException {
-        File xmlFile = new File("src/test/resources/Alpha-1.xml");
-        URI xsdRef = ValidationUtils.extractSchemaReference(new StreamSource(
-                xmlFile), null);
-        Assert.assertTrue("Expected schema reference */xsd/alpha.xsd", xsdRef
-                .toString().endsWith("/xsd/alpha.xsd"));
-    }
+	@Test
+	public void extractRelativeSchemaReference() throws FileNotFoundException, XMLStreamException {
+		File xmlFile = new File("src/test/resources/Alpha-1.xml");
+		URI xsdRef = ValidationUtils.extractSchemaReference(new StreamSource(xmlFile), null);
+		Assert.assertTrue("Expected schema reference */xsd/alpha.xsd", xsdRef.toString().endsWith("/xsd/alpha.xsd"));
+	}
 
-    @Test
-    public void testCompileKMLSchema() {
-        Schema kmlSchema = ValidationUtils.createKMLSchema();
-        Assert.assertNotNull(kmlSchema);
-    }
+	@Test
+	public void testCompileKMLSchema() {
+		Schema kmlSchema = ValidationUtils.createKMLSchema();
+		Assert.assertNotNull(kmlSchema);
+	}
 
-    @Test
-    public void coordinatesWith1DTuple() throws SAXException, IOException {
-        Document doc = docBuilder.parse(this.getClass().getResourceAsStream(
-                "/kml/LinearRingWith1DTuple.kml"));
-        Node coords = doc.getElementsByTagNameNS(Namespaces.KML22,
-                "coordinates").item(0);
-        ValidationErrorHandler errHandler = new ValidationErrorHandler();
-        ValidationUtils.validateCoordinateTuples(coords, 2, errHandler);
-        Assert.assertEquals("Unexpected number of errors detected.", 1,
-                errHandler.getErrorCount());
-        ValidationError err = errHandler.iterator().next();
-        Assert.assertTrue("Unexpected error message.", err.getMessage()
-                .contains("tuple not of minimum length 2 [position()=3]"));
-    }
+	@Test
+	public void coordinatesWith1DTuple() throws SAXException, IOException {
+		Document doc = docBuilder.parse(this.getClass().getResourceAsStream("/kml/LinearRingWith1DTuple.kml"));
+		Node coords = doc.getElementsByTagNameNS(Namespaces.KML22, "coordinates").item(0);
+		ValidationErrorHandler errHandler = new ValidationErrorHandler();
+		ValidationUtils.validateCoordinateTuples(coords, 2, errHandler);
+		Assert.assertEquals("Unexpected number of errors detected.", 1, errHandler.getErrorCount());
+		ValidationError err = errHandler.iterator().next();
+		Assert.assertTrue("Unexpected error message.",
+				err.getMessage().contains("tuple not of minimum length 2 [position()=3]"));
+	}
 
-    @Test
-    public void coordinatesWithLatOutOfRange() throws SAXException, IOException {
-        Document doc = docBuilder.parse(this.getClass().getResourceAsStream(
-                "/kml/LinearRingWithInvalidLat.kml"));
-        Node coords = doc.getElementsByTagNameNS(Namespaces.KML22,
-                "coordinates").item(0);
-        ValidationErrorHandler errHandler = new ValidationErrorHandler();
-        ValidationUtils.validateCoordinateTuples(coords, 2, errHandler);
-        Assert.assertEquals("Unexpected number of errors detected.", 1,
-                errHandler.getErrorCount());
-        ValidationError err = errHandler.iterator().next();
-        Assert.assertTrue(
-                "Unexpected error message.",
-                err.getMessage().contains(
-                        "latitude outside valid range of +/-90 [position()=4]"));
-    }
+	@Test
+	public void coordinatesWithLatOutOfRange() throws SAXException, IOException {
+		Document doc = docBuilder.parse(this.getClass().getResourceAsStream("/kml/LinearRingWithInvalidLat.kml"));
+		Node coords = doc.getElementsByTagNameNS(Namespaces.KML22, "coordinates").item(0);
+		ValidationErrorHandler errHandler = new ValidationErrorHandler();
+		ValidationUtils.validateCoordinateTuples(coords, 2, errHandler);
+		Assert.assertEquals("Unexpected number of errors detected.", 1, errHandler.getErrorCount());
+		ValidationError err = errHandler.iterator().next();
+		Assert.assertTrue("Unexpected error message.",
+				err.getMessage().contains("latitude outside valid range of +/-90 [position()=4]"));
+	}
+
 }

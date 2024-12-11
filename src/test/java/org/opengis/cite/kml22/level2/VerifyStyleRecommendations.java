@@ -22,44 +22,47 @@ import org.xml.sax.SAXException;
  */
 public class VerifyStyleRecommendations {
 
-    private static DocumentBuilder docBuilder;
-    private static ITestContext testContext;
-    private static ISuite suite;
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
+	private static DocumentBuilder docBuilder;
 
-    public VerifyStyleRecommendations() {
-    }
+	private static ITestContext testContext;
 
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-        testContext = mock(ITestContext.class);
-        suite = mock(ISuite.class);
-        when(testContext.getSuite()).thenReturn(suite);
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        dbf.setNamespaceAware(true);
-        docBuilder = dbf.newDocumentBuilder();
-    }
+	private static ISuite suite;
 
-    @Test
-    public void styleMapPairsOk() throws SAXException, IOException {
-        URL url = this.getClass().getResource("/kml/styles/StyleMap-Ok.xml");
-        Document doc = docBuilder.parse(url.toString());
-        StyleRecommendations iut = new StyleRecommendations();
-        iut.setTestSubject(doc);
-        iut.verifyStyleMapPairs();
-    }
+	@Rule
+	public ExpectedException thrown = ExpectedException.none();
 
-    @Test
-    public void styleMapPairsHaveDuplicateKeys() throws SAXException,
-            IOException {
-        thrown.expect(AssertionError.class);
-        thrown.expectMessage("missing one or more required kml:Pair elements (with kml:key of \"normal\" and \"highlight\")");
-        URL url = this.getClass().getResource(
-                "/kml/styles/StyleMap-DuplicateKeys.xml");
-        Document doc = docBuilder.parse(url.toString());
-        StyleRecommendations iut = new StyleRecommendations();
-        iut.setTestSubject(doc);
-        iut.verifyStyleMapPairs();
-    }
+	public VerifyStyleRecommendations() {
+	}
+
+	@BeforeClass
+	public static void setUpClass() throws Exception {
+		testContext = mock(ITestContext.class);
+		suite = mock(ISuite.class);
+		when(testContext.getSuite()).thenReturn(suite);
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		dbf.setNamespaceAware(true);
+		docBuilder = dbf.newDocumentBuilder();
+	}
+
+	@Test
+	public void styleMapPairsOk() throws SAXException, IOException {
+		URL url = this.getClass().getResource("/kml/styles/StyleMap-Ok.xml");
+		Document doc = docBuilder.parse(url.toString());
+		StyleRecommendations iut = new StyleRecommendations();
+		iut.setTestSubject(doc);
+		iut.verifyStyleMapPairs();
+	}
+
+	@Test
+	public void styleMapPairsHaveDuplicateKeys() throws SAXException, IOException {
+		thrown.expect(AssertionError.class);
+		thrown.expectMessage(
+				"missing one or more required kml:Pair elements (with kml:key of \"normal\" and \"highlight\")");
+		URL url = this.getClass().getResource("/kml/styles/StyleMap-DuplicateKeys.xml");
+		Document doc = docBuilder.parse(url.toString());
+		StyleRecommendations iut = new StyleRecommendations();
+		iut.setTestSubject(doc);
+		iut.verifyStyleMapPairs();
+	}
+
 }

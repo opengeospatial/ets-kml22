@@ -16,19 +16,17 @@ import org.xml.sax.SAXException;
  */
 public class VerifyKMLUtils {
 
-    public VerifyKMLUtils() {
-    }
+	public VerifyKMLUtils() {
+	}
 
-    @Test
-    public void extractKMLFromArchive() throws URISyntaxException, IOException,
-            SAXException {
-        URL fileUrl = this.getClass().getResource("/kmz/archive-1.kmz");
-        File kmzFile = new File(fileUrl.toURI());
-        Document kmlDoc = KMLUtils.extractKMLFromArchive(kmzFile);
-        assertNotNull(kmlDoc);
-        assertEquals("Document element has unexpected local name", "kml",
-                kmlDoc.getDocumentElement().getLocalName());
-        assertTrue("Expected document URI ending with 'doc.kml'.", kmlDoc
-                .getDocumentURI().endsWith("doc.kml"));
-    }
+	@Test
+	public void extractKMLFromArchive() throws URISyntaxException, IOException, SAXException {
+		URL fileUrl = this.getClass().getResource("/kmz/archive-1.kmz");
+		File kmzFile = new File(fileUrl.toURI());
+		Document kmlDoc = KMLUtils.extractKMLFromArchive(kmzFile);
+		assertNotNull(kmlDoc);
+		assertEquals("Document element has unexpected local name", "kml", kmlDoc.getDocumentElement().getLocalName());
+		assertTrue("Expected document URI ending with 'doc.kml'.", kmlDoc.getDocumentURI().endsWith("doc.kml"));
+	}
+
 }

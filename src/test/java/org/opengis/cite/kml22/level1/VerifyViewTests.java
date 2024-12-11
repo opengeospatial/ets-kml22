@@ -28,9 +28,13 @@ import org.xml.sax.SAXException;
 public class VerifyViewTests {
 
 	private static DocumentBuilder docBuilder;
+
 	private static ITestContext testContext;
+
 	private static ISuite suite;
+
 	private ValidationErrorHandler errHandler;
+
 	@Rule
 	public ExpectedException thrown = ExpectedException.none();
 
@@ -64,14 +68,14 @@ public class VerifyViewTests {
 		ViewTests iut = new ViewTests();
 		iut.setTestSubject(doc);
 		iut.verifyLookAt();
-		assertFalse("Expected no errors\n" + this.errHandler.toString(),
-				this.errHandler.errorsDetected());
+		assertFalse("Expected no errors\n" + this.errHandler.toString(), this.errHandler.errorsDetected());
 	}
 
 	@Test
 	public void lookAtIsMissingAltitude() throws SAXException, IOException {
 		thrown.expect(AssertionError.class);
-		thrown.expectMessage("kml:LookAt is missing required kml:altitude element when kml:altitudeMode != \"clampToGround\"");
+		thrown.expectMessage(
+				"kml:LookAt is missing required kml:altitude element when kml:altitudeMode != \"clampToGround\"");
 		URL url = this.getClass().getResource("/kml/views/LookAt-Error.xml");
 		Document doc = docBuilder.parse(url.toString());
 		ViewTests iut = new ViewTests();
@@ -81,8 +85,7 @@ public class VerifyViewTests {
 
 	@Test
 	public void lookAtIsMissingAltitudeMode() throws SAXException, IOException {
-		URL url = this.getClass().getResource(
-				"/kml/views/LookAt-MissingAltitudeMode.xml");
+		URL url = this.getClass().getResource("/kml/views/LookAt-MissingAltitudeMode.xml");
 		Document doc = docBuilder.parse(url.toString());
 		ViewTests iut = new ViewTests();
 		iut.setTestSubject(doc);
@@ -90,10 +93,8 @@ public class VerifyViewTests {
 	}
 
 	@Test
-	public void lookAtIsMissingAltitudeModeAndAltitude() throws SAXException,
-			IOException {
-		URL url = this.getClass().getResource(
-				"/kml/views/LookAt-MissingAltitudeModeAndAltitude.xml");
+	public void lookAtIsMissingAltitudeModeAndAltitude() throws SAXException, IOException {
+		URL url = this.getClass().getResource("/kml/views/LookAt-MissingAltitudeModeAndAltitude.xml");
 		Document doc = docBuilder.parse(url.toString());
 		ViewTests iut = new ViewTests();
 		iut.setTestSubject(doc);
@@ -101,10 +102,8 @@ public class VerifyViewTests {
 	}
 
 	@Test
-	public void lookAt_clampToGroundNoAltitude() throws SAXException,
-			IOException {
-		URL url = this.getClass().getResource(
-				"/kml/views/LookAt-ClampToGround.xml");
+	public void lookAt_clampToGroundNoAltitude() throws SAXException, IOException {
+		URL url = this.getClass().getResource("/kml/views/LookAt-ClampToGround.xml");
 		Document doc = docBuilder.parse(url.toString());
 		ViewTests iut = new ViewTests();
 		iut.setTestSubject(doc);
