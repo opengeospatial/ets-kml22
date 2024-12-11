@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.opengis.cite</groupId>
     <artifactId>ets-common</artifactId>
-    <version>9</version>
+    <version>13</version>
   </parent>
   <artifactId>ets-kml22</artifactId>
   <version>1.16-SNAPSHOT</version>
@@ -52,29 +52,18 @@
     <dependency>
       <groupId>org.opengis.cite.teamengine</groupId>
       <artifactId>teamengine-spi</artifactId>
-      <version>5.5.2</version>
     </dependency>
     <dependency>
       <groupId>org.opengis.cite</groupId>
       <artifactId>schema-utils</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.sun.jersey</groupId>
-      <artifactId>jersey-client</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>joda-time</groupId>
-      <artifactId>joda-time</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.vividsolutions</groupId>
-      <artifactId>jts</artifactId>
-      <version>1.13</version>
-    </dependency>
-    <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
-      <version>2.7</version>
+    </dependency>
+    <dependency>
+      <groupId>org.locationtech.jts</groupId>
+      <artifactId>jts-core</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.jena</groupId>
@@ -102,70 +91,34 @@
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
-      <version>6.9.10</version>
     </dependency>
     <dependency>
       <groupId>org.hamcrest</groupId>
       <artifactId>hamcrest-core</artifactId>
-      <version>1.3</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.opengis.cite.saxon</groupId>
       <artifactId>saxon9</artifactId>
-      <version>9.0.0.8</version>
-    </dependency>
-    <dependency>
-      <groupId>xml-apis</groupId>
-      <artifactId>xml-apis</artifactId>
-      <version>1.4.01</version>
     </dependency>
     <dependency>
       <groupId>xerces</groupId>
       <artifactId>xercesImpl</artifactId>
-      <version>2.12.2</version>
+      <exclusions>
+      	<exclusion>
+      		<groupId>xml-apis</groupId>
+      		<artifactId>xml-apis</artifactId>
+      	</exclusion>
+      </exclusions>
     </dependency>
     <dependency>
-      <groupId>javax.ws.rs</groupId>
-      <artifactId>jsr311-api</artifactId>
-      <version>1.1.1</version>
+      <groupId>org.glassfish.jersey.connectors</groupId>
+      <artifactId>jersey-apache-connector</artifactId>
     </dependency>
   </dependencies>
 
   <build>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.10.3</version>
-        <configuration>
-          <docfilessubdirs>true</docfilessubdirs>
-          <show>package</show>
-          <links>
-            <link>http://www.joda.org/joda-time/apidocs/</link>
-            <link>http://tsusiatsoftware.net/jts/javadoc/</link>
-            <link>http://commons.apache.org/proper/commons-io/javadocs/api-2.2/</link>
-            <link>http://testng.org/javadocs/</link>
-          </links>
-        </configuration>
-        <executions>
-          <execution>
-            <id>attach-javadocs</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <artifactId>maven-surefire-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <artifactId>maven-jar-plugin</artifactId>
-      </plugin>
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
         <configuration>
@@ -175,55 +128,10 @@
             </manifest>
           </archive>
         </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-release-plugin</artifactId>
-        <version>2.5.3</version>
-        <configuration>
-          <autoVersionSubmodules>true</autoVersionSubmodules>
-          <tagNameFormat>@{project.version}</tagNameFormat>
-          <releaseProfiles>release</releaseProfiles>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-site-plugin</artifactId>
-        <version>3.7.1</version>
-        <executions>
-          <execution>
-            <id>site-package</id>
-            <phase>prepare-package</phase>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-        <dependencies>
-          <dependency>
-            <groupId>org.asciidoctor</groupId>
-            <artifactId>asciidoctor-maven-plugin</artifactId>
-            <version>1.5.7.1</version>
-          </dependency>
-        </dependencies>
-        <configuration>
-          <relativizeDecorationLinks>false</relativizeDecorationLinks>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>buildnumber-maven-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <artifactId>maven-scm-publish-plugin</artifactId>
-        <version>1.1</version>
-        <configuration>
-          <scmBranch>gh-pages</scmBranch>
-        </configuration>
-      </plugin>
+      </plugin>  
       <plugin>
           <groupId>io.fabric8</groupId>
           <artifactId>docker-maven-plugin</artifactId>
-          <version>0.28.0</version>
           <configuration>
             <images>
               <image>
@@ -264,34 +172,6 @@
             </images>
           </configuration>
         </plugin>
-        <plugin>
-          <artifactId>maven-dependency-plugin</artifactId>
-          <version>3.0.0</version>
-          <configuration>
-            <artifactItems>
-              <artifactItem>
-                <groupId>org.opengis.cite.teamengine</groupId>
-                <artifactId>teamengine-web</artifactId>
-                <version>${docker.teamengine.version}</version>
-                <type>war</type>
-              </artifactItem>
-              <artifactItem>
-                <groupId>org.opengis.cite.teamengine</groupId>
-                <artifactId>teamengine-web</artifactId>
-                <version>${docker.teamengine.version}</version>
-                <classifier>common-libs</classifier>
-                <type>zip</type>
-              </artifactItem>
-              <artifactItem>
-                <groupId>org.opengis.cite.teamengine</groupId>
-                <artifactId>teamengine-console</artifactId>
-                <version>${docker.teamengine.version}</version>
-                <classifier>base</classifier>
-                <type>zip</type>
-              </artifactItem>
-            </artifactItems>
-          </configuration>
-        </plugin>
     </plugins>
   </build>
   
@@ -325,32 +205,6 @@
                 <goals>
                   <goal>copy</goal>
                 </goals>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-    <profile>
-      <id>release</id>
-      <build>
-        <plugins>
-          <plugin>
-            <artifactId>maven-gpg-plugin</artifactId>
-            <version>1.6</version>
-            <executions>
-              <execution>
-                <id>sign-artifacts</id>
-                <phase>verify</phase>
-                <goals>
-                  <goal>sign</goal>
-                </goals>
-                <configuration>
-                  <gpgArguments>
-                    <arg>--pinentry-mode</arg>
-                    <arg>loopback</arg>
-                  </gpgArguments>
-                </configuration>
               </execution>
             </executions>
           </plugin>
