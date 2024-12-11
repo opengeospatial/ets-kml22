@@ -1,6 +1,10 @@
 package org.opengis.cite.kml22.level1;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import java.io.IOException;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.validation.Schema;
@@ -12,9 +16,6 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.opengis.cite.kml22.SuiteAttribute;
 import org.opengis.cite.kml22.util.ValidationUtils;
-
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 import org.testng.ISuite;
 import org.testng.ITestContext;
 import org.w3c.dom.Document;

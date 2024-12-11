@@ -1,5 +1,10 @@
 package org.opengis.cite.kml22.level1;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import java.io.IOException;
 import java.net.URL;
 
@@ -14,11 +19,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.opengis.cite.kml22.Namespaces;
-
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
 import org.testng.ISuite;
 import org.testng.ITestContext;
 import org.w3c.dom.Document;

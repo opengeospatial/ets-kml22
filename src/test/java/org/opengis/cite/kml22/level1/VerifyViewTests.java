@@ -1,10 +1,15 @@
 package org.opengis.cite.kml22.level1;
 
+import static org.junit.Assert.assertFalse;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import java.io.IOException;
 import java.net.URL;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -12,11 +17,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.opengis.cite.validation.ValidationErrorHandler;
-
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
 import org.testng.ISuite;
 import org.testng.ITestContext;
 import org.w3c.dom.Document;

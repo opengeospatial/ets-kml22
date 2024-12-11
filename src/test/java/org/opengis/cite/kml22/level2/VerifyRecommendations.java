@@ -1,17 +1,18 @@
 package org.opengis.cite.kml22.level2;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import java.io.IOException;
 import java.net.URL;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
 import org.testng.ISuite;
 import org.testng.ITestContext;
 import org.w3c.dom.Document;

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
 import java.util.logging.Level;
+
 import javax.xml.XMLConstants;
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;

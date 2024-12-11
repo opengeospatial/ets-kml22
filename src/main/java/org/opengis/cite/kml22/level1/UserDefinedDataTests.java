@@ -13,11 +13,6 @@ import javax.xml.namespace.QName;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.xpath.XPathExpressionException;
 
-import net.sf.saxon.dom.ElementOverNodeInfo;
-import net.sf.saxon.s9api.SaxonApiException;
-import net.sf.saxon.s9api.XdmNode;
-import net.sf.saxon.s9api.XdmValue;
-
 import org.opengis.cite.kml22.BaseFixture;
 import org.opengis.cite.kml22.ErrorMessage;
 import org.opengis.cite.kml22.Namespaces;
@@ -31,6 +26,11 @@ import org.testng.annotations.Test;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import net.sf.saxon.dom.ElementOverNodeInfo;
+import net.sf.saxon.s9api.SaxonApiException;
+import net.sf.saxon.s9api.XdmNode;
+import net.sf.saxon.s9api.XdmValue;
 
 /**
  * Contains test methods that verify constraints applicable to user-defined data elements

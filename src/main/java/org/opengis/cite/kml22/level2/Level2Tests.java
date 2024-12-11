@@ -1,7 +1,6 @@
 package org.opengis.cite.kml22.level2;
 
 import org.opengis.cite.kml22.SuiteAttribute;
-import org.opengis.cite.kml22.TestRunArg;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeTest;

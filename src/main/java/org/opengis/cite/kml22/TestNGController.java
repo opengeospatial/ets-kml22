@@ -1,9 +1,5 @@
 package org.opengis.cite.kml22;
 
-import com.occamlab.te.spi.executors.TestRunExecutor;
-import com.occamlab.te.spi.executors.testng.TestNGExecutor;
-import com.occamlab.te.spi.jaxrs.TestSuiteController;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,6 +18,10 @@ import javax.xml.xpath.XPathFactory;
 
 import org.opengis.cite.kml22.util.TestSuiteLogger;
 import org.w3c.dom.Document;
+
+import com.occamlab.te.spi.executors.TestRunExecutor;
+import com.occamlab.te.spi.executors.testng.TestNGExecutor;
+import com.occamlab.te.spi.jaxrs.TestSuiteController;
 
 /**
  * Main test run controller oversees execution of TestNG test suites.

@@ -1,6 +1,9 @@
 package org.opengis.cite.kml22.util;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -12,10 +15,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.xpath.XPathExpressionException;
 
-import net.sf.saxon.s9api.SaxonApiException;
-import net.sf.saxon.s9api.XdmValue;
-import net.sf.saxon.trans.XPathException;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.w3c.dom.Document;
@@ -23,6 +22,10 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
+import net.sf.saxon.s9api.SaxonApiException;
+import net.sf.saxon.s9api.XdmValue;
+import net.sf.saxon.trans.XPathException;
 
 /**
  * Verifies the behavior of the XMLUtils class.

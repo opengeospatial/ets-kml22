@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;
+
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -22,6 +23,11 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 import net.sf.saxon.s9api.DOMDestination;
 import net.sf.saxon.s9api.DocumentBuilder;
 import net.sf.saxon.s9api.Processor;
@@ -33,11 +39,6 @@ import net.sf.saxon.s9api.XdmValue;
 import net.sf.saxon.s9api.XsltCompiler;
 import net.sf.saxon.s9api.XsltExecutable;
 import net.sf.saxon.s9api.XsltTransformer;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 /**
  * Provides various utility methods for accessing or manipulating XML representations.
