@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.opengis.cite</groupId>
     <artifactId>ets-common</artifactId>
-    <version>13</version>
+    <version>14-SNAPSHOT</version>
   </parent>
   <artifactId>ets-kml22</artifactId>
   <version>1.16-SNAPSHOT</version>
@@ -68,17 +68,6 @@
     <dependency>
       <groupId>org.apache.jena</groupId>
       <artifactId>jena-iri</artifactId>
-      <version>1.1.2</version>      
-      <exclusions>
-        <exclusion>
-          <groupId>org.slf4j</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>log4j</groupId>
-          <artifactId>log4j</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
