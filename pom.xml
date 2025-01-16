@@ -1,28 +1,31 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.opengis.cite</groupId>
     <artifactId>ets-common</artifactId>
     <version>14-SNAPSHOT</version>
   </parent>
+
+  <modelVersion>4.0.0</modelVersion>
   <artifactId>ets-kml22</artifactId>
   <version>1.16-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>KML 2.2 Conformance Test Suite</name>
-  <description>Checks KML 2.2 instance documents for conformance to the OGC specification 
-  (OGC 07-147r2).</description>
+  <description>Checks KML 2.2 instance documents for conformance to the OGC specification
+    (OGC 07-147r2).
+  </description>
   <licenses>
     <license>
       <name>Apache License, Version 2.0</name>
-      <url>http://opensource.org/licenses/Apache-2.0</url>
+      <url>https://opensource.org/licenses/Apache-2.0</url>
     </license>
   </licenses>
 
   <organization>
     <name>Open Geospatial Consortium</name>
-    <url>http://www.opengeospatial.org/</url>
+    <url>https://www.ogc.org/</url>
   </organization>
   <scm>
     <connection>scm:git:https://github.com/opengeospatial/ets-kml22.git</connection>
@@ -40,12 +43,15 @@
       <url>https://github.com/rjmartell</url>
       <timezone>Canada/Pacific</timezone>
     </developer>
+    <developer>
+      <name>Dirk Stenger</name>
+      <url>https://github.com/dstenger</url>
+    </developer>
   </developers>
 
   <properties>
     <ets-code>kml22</ets-code>
     <spec-version>2.2</spec-version>
-    <docker.teamengine.version>5.5.2</docker.teamengine.version>
   </properties>
 
   <dependencies>
@@ -94,10 +100,10 @@
       <groupId>xerces</groupId>
       <artifactId>xercesImpl</artifactId>
       <exclusions>
-      	<exclusion>
-      		<groupId>xml-apis</groupId>
-      		<artifactId>xml-apis</artifactId>
-      	</exclusion>
+        <exclusion>
+          <groupId>xml-apis</groupId>
+          <artifactId>xml-apis</artifactId>
+        </exclusion>
       </exclusions>
     </dependency>
     <dependency>
@@ -117,55 +123,36 @@
             </manifest>
           </archive>
         </configuration>
-      </plugin>  
+      </plugin>
       <plugin>
-          <groupId>io.fabric8</groupId>
-          <artifactId>docker-maven-plugin</artifactId>
-          <configuration>
-            <images>
-              <image>
-                <name>ogccite/${project.artifactId}</name>
-                <build>
-                  <dockerFileDir>${project.basedir}/src/docker</dockerFileDir>
-                  <tags>
-                    <tag>${project.version}-teamengine-${docker.teamengine.version}</tag>
-                  </tags>
-                  <assembly>
-                    <inline>
-                      <fileSets>
-                        <fileSet>
-                          <directory>${project.build.directory}</directory>
-                          <outputDirectory>.</outputDirectory>
-                          <includes>
-                            <include>dependency/*teamengine-*.war</include>
-                            <include>dependency/*teamengine-*.zip</include>
-                            <include>*ets-*.zip</include>
-                          </includes>
-                        </fileSet>
-                      </fileSets>
-                    </inline>
-                  </assembly>
-                </build>
-                <run>
-                  <ports>
-                    <port>8081:8080</port>
-                  </ports>
-                  <wait>
-                    <http>
-                      <url>http://localhost:8081/teamengine</url>
-                    </http>
-                    <time>120000</time>
-                  </wait>
-                </run>
-              </image>
-            </images>
-          </configuration>
-        </plugin>
+        <artifactId>maven-scm-publish-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>io.fabric8</groupId>
+        <artifactId>docker-maven-plugin</artifactId>
+        <configuration>
+          <images>
+            <image>
+              <run>
+                <ports>
+                  <port>8081:8080</port>
+                </ports>
+                <wait>
+                  <http>
+                    <url>http://localhost:8081/teamengine</url>
+                  </http>
+                  <time>120000</time>
+                </wait>
+              </run>
+            </image>
+          </images>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
-  
+
   <profiles>
-	<profile>
+    <profile>
       <id>docker</id>
       <build>
         <plugins>
@@ -203,10 +190,6 @@
   </profiles>
 
   <distributionManagement>
-    <repository>
-      <id>sonatype-nexus-staging</id>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-    </repository>
     <site>
       <id>site</id>
       <url>scm:git:git@github.com:opengeospatial/ets-kml22.git</url>
