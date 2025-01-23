@@ -1,6 +1,8 @@
 package org.opengis.cite.kml22.util;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,19 +18,17 @@ import org.xml.sax.SAXException;
  */
 public class VerifyKMLUtils {
 
-    public VerifyKMLUtils() {
-    }
+	public VerifyKMLUtils() {
+	}
 
-    @Test
-    public void extractKMLFromArchive() throws URISyntaxException, IOException,
-            SAXException {
-        URL fileUrl = this.getClass().getResource("/kmz/archive-1.kmz");
-        File kmzFile = new File(fileUrl.toURI());
-        Document kmlDoc = KMLUtils.extractKMLFromArchive(kmzFile);
-        assertNotNull(kmlDoc);
-        assertEquals("Document element has unexpected local name", "kml",
-                kmlDoc.getDocumentElement().getLocalName());
-        assertTrue("Expected document URI ending with 'doc.kml'.", kmlDoc
-                .getDocumentURI().endsWith("doc.kml"));
-    }
+	@Test
+	public void extractKMLFromArchive() throws URISyntaxException, IOException, SAXException {
+		URL fileUrl = this.getClass().getResource("/kmz/archive-1.kmz");
+		File kmzFile = new File(fileUrl.toURI());
+		Document kmlDoc = KMLUtils.extractKMLFromArchive(kmzFile);
+		assertNotNull(kmlDoc);
+		assertEquals("Document element has unexpected local name", "kml", kmlDoc.getDocumentElement().getLocalName());
+		assertTrue("Expected document URI ending with 'doc.kml'.", kmlDoc.getDocumentURI().endsWith("doc.kml"));
+	}
+
 }
