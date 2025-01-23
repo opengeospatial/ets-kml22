@@ -1,5 +1,11 @@
 = Release Notes
 
+== 1.16 (2025-01-23)
+
+Attention: Java 17 and Tomcat 10.1 are required.
+
+* https://github.com/opengeospatial/ets-kml22/issues/33[#33]: Migrate test suite to TEAM Engine 6 (Java 17)
+
 == 1.15 (2023-01-31)
 
 * https://github.com/opengeospatial/ets-kml22/issues/11[#11]: If a users selects a file, the default uri also gets logged
